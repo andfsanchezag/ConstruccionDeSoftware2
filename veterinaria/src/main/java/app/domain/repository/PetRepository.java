@@ -1,11 +1,11 @@
-package veterinaria.domain.repository;
+package app.domain.repository;
 
 
 
 import java.util.List;
 import java.util.Optional;
 
-import veterinaria.domain.model.Pet;
+import app.domain.model.Pet;
 
 public interface PetRepository {
     Optional<Pet> findById(String petId);

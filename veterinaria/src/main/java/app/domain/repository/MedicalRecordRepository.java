@@ -1,10 +1,10 @@
-package veterinaria.domain.repository;
+package app.domain.repository;
 
 
 
 import java.util.Optional;
 
-import veterinaria.domain.model.MedicalRecord;
+import app.domain.model.MedicalRecord;
 
 public interface MedicalRecordRepository {
     Optional<MedicalRecord> findByPetId(String petId);

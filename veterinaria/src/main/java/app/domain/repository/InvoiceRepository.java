@@ -1,10 +1,10 @@
-package veterinaria.domain.repository;
+package app.domain.repository;
 
 
 
 import java.util.List;
 
-import veterinaria.domain.model.Invoice;
+import app.domain.model.Invoice;
 
 public interface InvoiceRepository {
     void save(Invoice invoice);

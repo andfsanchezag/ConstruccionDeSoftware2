@@ -1,4 +1,4 @@
-package veterinaria.domain.model;
+package app.domain.model;
 
 
 public class Pet {

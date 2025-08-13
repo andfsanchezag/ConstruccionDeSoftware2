@@ -1,11 +1,11 @@
-package veterinaria.domain.repository;
+package app.domain.repository;
 
 
 
 import java.util.List;
 import java.util.Optional;
 
-import veterinaria.domain.model.MedicalOrder;
+import app.domain.model.MedicalOrder;
 
 public interface MedicalOrderRepository {
     Optional<MedicalOrder> findByOrderId(String orderId);

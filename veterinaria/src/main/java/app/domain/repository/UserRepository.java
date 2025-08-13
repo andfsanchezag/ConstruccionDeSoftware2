@@ -1,11 +1,11 @@
-package veterinaria.domain.repository;
+package app.domain.repository;
 
 
 
 import java.util.List;
 import java.util.Optional;
 
-import veterinaria.domain.model.User;
+import app.domain.model.User;
 
 public interface UserRepository {
     Optional<User> findByDocumentId(String documentId);

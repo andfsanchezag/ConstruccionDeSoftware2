@@ -1,64 +1,64 @@
 package app.domain.model;
 
+import app.domain.model.emuns.Spices;
 
 public class Pet {
-    private final String petId;
-    private final String ownerDocumentId;
-    private final String name;
-    private final int age;
-    private final Species species;
-    private final String breed;
-    private final String color;
-    private final String size;
-    private final double weight;
-
-    public Pet(String petId, String ownerDocumentId, String name, int age, Species species,
-               String breed, String color, String size, double weight) {
-        this.petId = petId;
-        this.ownerDocumentId = ownerDocumentId;
-        this.name = name;
-        this.age = age;
-        this.species = species;
-        this.breed = breed;
-        this.color = color;
-        this.size = size;
-        this.weight = weight;
-    }
-
-    public String getPetId() {
-        return petId;
-    }
-
-    public String getOwnerDocumentId() {
-        return ownerDocumentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public Species getSpecies() {
-        return species;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
+	private long id;
+	private Person owner;
+	private String name;
+	private int age;
+	private double weigth;
+	private Spices spices;
+	private String features;
+	private String breed;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Person getOwner() {
+		return owner;
+	}
+	public void setOwner(Person owner) {
+		this.owner = owner;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getWeigth() {
+		return weigth;
+	}
+	public void setWeigth(double weigth) {
+		this.weigth = weigth;
+	}
+	public Spices getSpices() {
+		return spices;
+	}
+	public void setSpices(Spices spices) {
+		this.spices = spices;
+	}
+	public String getFeatures() {
+		return features;
+	}
+	public void setFeatures(String features) {
+		this.features = features;
+	}
+	public String getBreed() {
+		return breed;
+	}
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+	
+	
 }
-

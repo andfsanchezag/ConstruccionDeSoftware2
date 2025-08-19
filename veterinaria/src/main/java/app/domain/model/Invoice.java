@@ -1,59 +1,57 @@
 package app.domain.model;
 
+import java.sql.Date;
 
 public class Invoice {
-    private final String invoiceId;
-    private final String petId;
-    private final String ownerDocumentId;
-    private final String orderId; // may be null if not medication
-    private final String productName;
-    private final double value;
-    private final int quantity;
-    private final String date;
-
-    public Invoice(String invoiceId, String petId, String ownerDocumentId, String orderId,
-                   String productName, double value, int quantity, String date) {
-        this.invoiceId = invoiceId;
-        this.petId = petId;
-        this.ownerDocumentId = ownerDocumentId;
-        this.orderId = orderId;
-        this.productName = productName;
-        this.value = value;
-        this.quantity = quantity;
-        this.date = date;
-    }
-
-    public String getInvoiceId() {
-        return invoiceId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-	public String getPetId() {
-		return petId;
+	private long id;
+	private Pet pet;
+	private Person Owner;
+	private ClinicalOrder order;
+	private String productName;
+	private double productAmount;
+	private Date date;
+	public long getId() {
+		return id;
 	}
-
-	public String getOwnerDocumentId() {
-		return ownerDocumentId;
+	public void setId(long id) {
+		this.id = id;
 	}
-
-	public String getOrderId() {
-		return orderId;
+	public Pet getPet() {
+		return pet;
 	}
-
-	public double getValue() {
-		return value;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
-
-	public int getQuantity() {
-		return quantity;
+	public Person getOwner() {
+		return Owner;
 	}
-
-	public String getDate() {
+	public void setOwner(Person owner) {
+		Owner = owner;
+	}
+	public ClinicalOrder getOrder() {
+		return order;
+	}
+	public void setOrder(ClinicalOrder order) {
+		this.order = order;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public double getProductAmount() {
+		return productAmount;
+	}
+	public void setProductAmount(double productAmount) {
+		this.productAmount = productAmount;
+	}
+	public Date getDate() {
 		return date;
 	}
-    
-    
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
 }

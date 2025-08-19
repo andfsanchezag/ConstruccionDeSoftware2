@@ -4,7 +4,7 @@ import app.domain.model.emuns.Spices;
 
 public class Pet {
 	private long id;
-	private Person owner;
+	private User owner;
 	private String name;
 	private int age;
 	private double weigth;
@@ -17,10 +17,10 @@ public class Pet {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Person getOwner() {
+	public User getOwner() {
 		return owner;
 	}
-	public void setOwner(Person owner) {
+	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 	public String getName() {

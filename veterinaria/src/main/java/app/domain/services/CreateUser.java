@@ -3,11 +3,11 @@ package app.domain.services;
 import app.domain.model.User;
 import app.domain.ports.UserPort;
 
-public class UserService {
+public class CreateUser {
 
 	private UserPort userPort;
 
-	public void createUser(User user) throws Exception {
+	public void create(User user) throws Exception {
 		// validar que solo exista una persona con la cedula
 		if (userPort.findByDocument(user) != null) {
 			throw new Exception("ya existe una persona registrada con esa cedula");

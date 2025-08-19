@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Invoice {
 	private long id;
 	private Pet pet;
-	private Person Owner;
+	private User Owner;
 	private ClinicalOrder order;
 	private String productName;
 	private double productAmount;
@@ -22,10 +22,10 @@ public class Invoice {
 	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
-	public Person getOwner() {
+	public User getOwner() {
 		return Owner;
 	}
-	public void setOwner(Person owner) {
+	public void setOwner(User owner) {
 		Owner = owner;
 	}
 	public ClinicalOrder getOrder() {

@@ -30,6 +30,9 @@ public class CreateClinicalRecord {
 		if(clinicalOrder==null) {
 			throw new Exception("la historia clinica debe tener una orden valida asociada");
 		}
+		clinicalRecord.setPet(pet);
+		clinicalRecord.setVeterinarian(veterinarian);
+		clinicalRecord.setClinicalOrder(clinicalOrder);
 		clinicalRecordPort.save(clinicalRecord);
 		
 	}

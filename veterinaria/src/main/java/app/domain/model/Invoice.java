@@ -9,6 +9,8 @@ public class Invoice {
 	private ClinicalOrder order;
 	private String productName;
 	private double productAmount;
+	private boolean medicine;
+	
 	private Date date;
 	public long getId() {
 		return id;
@@ -52,6 +54,11 @@ public class Invoice {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+	public boolean isMedicine() {
+		return medicine;
+	}
+	public void setMedicine(boolean medicine) {
+		this.medicine = medicine;
+	}
 	
 }

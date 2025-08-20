@@ -14,6 +14,7 @@ public class CreatePet {
 		if(owner== null) {
 			throw new Exception("la mascota debe tener un dueño valido");
 		}
+		pet.setOwner(owner);
 		petPort.save(pet);
 	}
 

@@ -19,7 +19,7 @@ public class CreateInvoice {
 		}
 		if(invoice.isMedicine()) {
 			ClinicalOrder clinicalOrder = clinicalOrderPort.findById(invoice.getOrder());
-			if(clinicalOrder==null) {
+			if(clinicalOrder==null || pet.getId()!=clinicalOrder.getPet().getId()) {
 				throw new Exception ("la venta de un medicamento requiere de una orden asociada");
 			}
 			invoice.setOrder(clinicalOrder);

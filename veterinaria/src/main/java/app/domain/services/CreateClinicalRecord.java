@@ -23,7 +23,7 @@ public class CreateClinicalRecord {
 			throw new Exception("la historia debe tener una mascota valida");
 		}
 		User veterinarian = userPort.findByDocument(clinicalRecord.getVeterinarian());
-		if(veterinarian==null || veterinarian.getRole().equals(Role.VETERINARIAN)) {
+		if(veterinarian==null || !veterinarian.getRole().equals(Role.VETERINARIAN)) {
 			throw new Exception("la historia clinica debe ser registrada por un veterinario valido");
 		}
 		ClinicalOrder clinicalOrder = clinicalOrderPort.findById(clinicalRecord.getClinicalOrder());

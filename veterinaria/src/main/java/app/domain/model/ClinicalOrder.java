@@ -6,7 +6,7 @@ public class ClinicalOrder {
 	
 	private long id;
 	private Pet pet;
-	private Person owner;
+	private User owner;
 	private User veterinarian;
 	private String medicine;
 	private String doce;
@@ -23,10 +23,10 @@ public class ClinicalOrder {
 	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
-	public Person getOwner() {
+	public User getOwner() {
 		return owner;
 	}
-	public void setOwner(Person owner) {
+	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 	public User getVeterinarian() {

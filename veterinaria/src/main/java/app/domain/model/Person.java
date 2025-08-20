@@ -9,7 +9,6 @@ public class Person {
 	private int age;
 	private Role role;
 	
-	public Person() {}
 	
 	public long getId() {
 		return id;

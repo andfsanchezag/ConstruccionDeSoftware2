@@ -1,0 +1,37 @@
+package app.application.usecases;
+
+import java.util.List;
+
+import app.domain.model.ClinicalOrder;
+import app.domain.model.Pet;
+import app.domain.model.User;
+import app.domain.model.emuns.Role;
+import app.domain.services.CreateClinicalOrder;
+import app.domain.services.CreatePet;
+import app.domain.services.CreateUser;
+import app.domain.services.SearchClinicalOrderByPet;
+
+public class VeterinarianUseCase {
+	
+	private CreateUser createUser;
+	private CreatePet createPet;
+	private CreateClinicalOrder createClinicalOrder;
+	private SearchClinicalOrderByPet searchClinicalOrder;
+
+	public void CreateOwner(User user) throws Exception{
+		user.setRole(Role.OWNER);
+		createUser.create(user);
+	}
+	
+	public void CreatePet(Pet pet) throws Exception{
+		createPet.create(pet);
+	}
+	
+	public void createOrder(ClinicalOrder order) throws Exception {
+		createClinicalOrder.create(order);
+	}
+	
+	public List<ClinicalOrder> searchOrders(Pet pet) throws Exception{
+		return searchClinicalOrder.search(pet);
+	}
+}

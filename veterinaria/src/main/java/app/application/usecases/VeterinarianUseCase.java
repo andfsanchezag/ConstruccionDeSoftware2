@@ -3,10 +3,12 @@ package app.application.usecases;
 import java.util.List;
 
 import app.domain.model.ClinicalOrder;
+import app.domain.model.ClinicalRecord;
 import app.domain.model.Pet;
 import app.domain.model.User;
 import app.domain.model.emuns.Role;
 import app.domain.services.CreateClinicalOrder;
+import app.domain.services.CreateClinicalRecord;
 import app.domain.services.CreatePet;
 import app.domain.services.CreateUser;
 import app.domain.services.SearchClinicalOrderByPet;
@@ -17,6 +19,7 @@ public class VeterinarianUseCase {
 	private CreatePet createPet;
 	private CreateClinicalOrder createClinicalOrder;
 	private SearchClinicalOrderByPet searchClinicalOrder;
+	private CreateClinicalRecord createClinicalRecord;
 
 	public void CreateOwner(User user) throws Exception{
 		user.setRole(Role.OWNER);
@@ -33,5 +36,9 @@ public class VeterinarianUseCase {
 	
 	public List<ClinicalOrder> searchOrders(Pet pet) throws Exception{
 		return searchClinicalOrder.search(pet);
+	}
+	
+	public void createClinicalRecord(ClinicalRecord clinicalRecord) throws Exception {
+		createClinicalRecord.create(clinicalRecord);
 	}
 }

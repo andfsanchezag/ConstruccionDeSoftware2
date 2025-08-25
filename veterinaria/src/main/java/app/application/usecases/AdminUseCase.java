@@ -12,6 +12,7 @@ public class AdminUseCase {
 		user.setRole(Role.VETERINARIAN);
 		createUser.create(user);
 	}
+	
 	public void createSeller(User user) throws Exception {
 		user.setRole(Role.SELLER);
 		createUser.create(user);

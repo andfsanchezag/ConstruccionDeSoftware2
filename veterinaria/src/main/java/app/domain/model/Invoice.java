@@ -12,6 +12,8 @@ public class Invoice {
 	private boolean medicine;
 	
 	private Date date;
+	
+	
 	public long getId() {
 		return id;
 	}

@@ -1,6 +1,7 @@
 package app.domain.services;
 
 import app.domain.model.User;
+import app.domain.model.emuns.Role;
 import app.domain.ports.UserPort;
 
 public class CreateUser {
@@ -12,7 +13,7 @@ public class CreateUser {
 			throw new Exception("ya existe una persona registrada con esa cedula");
 		}
 
-		if (userPort.findByUserName(user) != null) {
+		if (!user.getRole().equals(Role.OWNER) && userPort.findByUserName(user) != null) {
 			throw new Exception("ya existe una persona registrada con ese nombre de usuario");
 		}
 		userPort.save(user);

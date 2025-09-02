@@ -2,15 +2,21 @@ package app.adapter.in.client;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import app.adapter.in.builder.UserBuilder;
 import app.application.usecases.AdminUseCase;
 import app.domain.model.User;
 
+@Controller
 public class AdminClient {
 
 	private static final String MENU = "Ingrese una de las opciones \n 1. para crear veterinario \n 2. para crear vendedor \n 3. para salir";
 	private static Scanner reader = new Scanner(System.in);
+	@Autowired
 	private AdminUseCase adminUseCase;
+	@Autowired
 	private UserBuilder userBuilder;
 
 	public void session() {

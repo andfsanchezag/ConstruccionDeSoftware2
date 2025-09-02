@@ -1,5 +1,8 @@
 package app.adapter.in.validators;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class InvoiceValidator extends SimpleValidator {
 	
 	public String productNameValidator(String value) throws Exception {

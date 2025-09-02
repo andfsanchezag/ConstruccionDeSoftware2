@@ -2,16 +2,22 @@ package app.adapter.in.client;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import app.adapter.in.builder.InvoiceBuilder;
 import app.application.usecases.SellerUseCase;
 import app.domain.model.Invoice;
 
+@Controller
 public class SellerClient {
 
 	private static final String MENU = "Ingrese la opcion que desea:" + " \n 1. para crear factura"
 			+ " \n 2. para ver ordenes de una mascota " + "\n 3. para cerrar sesion";
 	private static Scanner reader = new Scanner(System.in);
+	@Autowired
 	private SellerUseCase sellerCaseUse;
+	@Autowired
 	private InvoiceBuilder invoiceBuilder;
 
 	public void session() {

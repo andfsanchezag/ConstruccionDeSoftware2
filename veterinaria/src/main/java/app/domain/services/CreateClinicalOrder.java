@@ -1,5 +1,7 @@
 package app.domain.services;
 
+import org.springframework.stereotype.Service;
+
 import app.domain.model.ClinicalOrder;
 import app.domain.model.Pet;
 import app.domain.model.User;
@@ -8,6 +10,8 @@ import app.domain.ports.ClinicalOrderPort;
 import app.domain.ports.PetPort;
 import app.domain.ports.UserPort;
 
+
+//@Service
 public class CreateClinicalOrder {
 	private UserPort userPort;
 	private PetPort petPort;

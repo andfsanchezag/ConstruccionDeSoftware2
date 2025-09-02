@@ -2,14 +2,19 @@ package app.adapter.in.builder;
 
 import java.sql.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import app.adapter.in.validators.InvoiceValidator;
 import app.domain.model.ClinicalOrder;
 import app.domain.model.Invoice;
 import app.domain.model.Pet;
 import app.domain.model.User;
 
-public class InvoiceBuilder {
 
+@Component
+public class InvoiceBuilder {
+	@Autowired
 	private InvoiceValidator invoiceValidator;
 
 	public Invoice build(String petId, String ownerDocument, String productAmount, String productName,

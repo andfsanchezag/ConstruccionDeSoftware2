@@ -14,17 +14,19 @@ public class ClinicalOrderAdapter implements ClinicalOrderPort {
 
 	@Override
 	public ClinicalOrder findById(ClinicalOrder clinicalOrder) throws Exception {
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ClinicalOrder> findByPet(Pet pet) throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void save(ClinicalOrder clinicalOrder) throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 

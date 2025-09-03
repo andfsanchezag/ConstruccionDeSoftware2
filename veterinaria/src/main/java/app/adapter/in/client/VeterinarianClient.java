@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import app.adapter.in.builder.UserBuilder;
 import app.application.usecases.VeterinarianUseCase;
+import app.domain.model.Pet;
 import app.domain.model.User;
 
 public class VeterinarianClient {
@@ -43,8 +44,8 @@ public class VeterinarianClient {
 			return true;
 		}
 		case "2": {
-			// Pet pet = readPetData();
-			// veterinarianUseCase.CreatePet(pet);
+			Pet pet = readPetData();
+			 veterinarianUseCase.CreatePet(pet);
 			return true;
 		}
 		case "3": {
@@ -71,6 +72,11 @@ public class VeterinarianClient {
 			return true;
 		}
 		}
+	}
+
+	private Pet readPetData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private User readOwnerData() throws Exception {

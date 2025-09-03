@@ -1,11 +1,13 @@
 package app.adapter.in.client;
 
+import app.adapter.in.builder.PetBuilder;
 import java.util.Scanner;
 
 import app.adapter.in.builder.UserBuilder;
 import app.application.usecases.VeterinarianUseCase;
 import app.domain.model.Pet;
 import app.domain.model.User;
+import app.domain.model.emuns.Spices;
 
 public class VeterinarianClient {
 
@@ -15,6 +17,7 @@ public class VeterinarianClient {
 
 	private VeterinarianUseCase veterinarianUseCase;
 	private UserBuilder userBuilder;
+        private PetBuilder petBuilder;
 	private static Scanner reader = new Scanner(System.in);
 
 	public void session() {
@@ -69,14 +72,29 @@ public class VeterinarianClient {
 			return false;
 		}
 		default: {
+                    System.out.println("Ingrese una opcion valida");
 			return true;
 		}
 		}
 	}
 
-	private Pet readPetData() {
-		// TODO Auto-generated method stub
-		return null;
+	private Pet readPetData()throws Exception {
+                System.out.println("ingrese la cedula del dueño");
+                String document = reader.nextLine();
+                System.out.println("ingrese el nombre de la mascota");
+                String name = reader.nextLine();
+                System.out.println("ingrese la edad de la mascota");
+                String age = reader.nextLine();
+                System.out.println("ingrese el peso");
+                String weigth = reader.nextLine();
+                System.out.println("ingrese la especie");
+                String spices = reader.nextLine();
+                System.out.println("ingrese las caracteristicas");
+                String features = reader.nextLine();
+                System.out.println("ingrese la raza");
+                String breed = reader.nextLine();
+               
+		return petBuilder.builder(document, name, age, weigth, spices, features, breed);
 	}
 
 	private User readOwnerData() throws Exception {

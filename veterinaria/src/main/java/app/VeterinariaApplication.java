@@ -5,13 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import app.adapter.in.client.SellerClient;
+import app.adapter.in.client.AdminClient;
 
 @SpringBootApplication
 public class VeterinariaApplication implements CommandLineRunner  {
 	
 	@Autowired
-	private SellerClient client;
+	private AdminClient client;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(VeterinariaApplication.class, args);

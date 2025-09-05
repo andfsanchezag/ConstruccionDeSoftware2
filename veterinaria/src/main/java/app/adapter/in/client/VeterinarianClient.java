@@ -1,23 +1,33 @@
 package app.adapter.in.client;
 
-import app.adapter.in.builder.PetBuilder;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import app.adapter.in.builder.ClinicalOrderBuilder;
+import app.adapter.in.builder.PetBuilder;
 import app.adapter.in.builder.UserBuilder;
 import app.application.usecases.VeterinarianUseCase;
+import app.domain.model.ClinicalOrder;
 import app.domain.model.Pet;
 import app.domain.model.User;
-import app.domain.model.emuns.Spices;
 
+@Controller
 public class VeterinarianClient {
 
 	private static final String MENU = "Ingrese una opcion \n" + "1. para crear dueño de mascota.\n"
 			+ "2. para crear mascota.\n" + "3. para crear orden \n" + "4. para registrar historia \n"
 			+ "5. para anular orden\n" + "6. para consultar ordenes. \n" + "7. para cerrar sesion.";
 
+	@Autowired
 	private VeterinarianUseCase veterinarianUseCase;
+	@Autowired
 	private UserBuilder userBuilder;
-        private PetBuilder petBuilder;
+	@Autowired
+	private PetBuilder petBuilder;
+	@Autowired
+	private ClinicalOrderBuilder clinicalOrderBuilder;
 	private static Scanner reader = new Scanner(System.in);
 
 	public void session() {
@@ -48,11 +58,12 @@ public class VeterinarianClient {
 		}
 		case "2": {
 			Pet pet = readPetData();
-			 veterinarianUseCase.CreatePet(pet);
+			veterinarianUseCase.CreatePet(pet);
 			return true;
 		}
 		case "3": {
-
+			ClinicalOrder clinicalOrder = readOrderData();
+			veterinarianUseCase.createOrder(clinicalOrder);
 			return true;
 		}
 		case "4": {
@@ -72,28 +83,41 @@ public class VeterinarianClient {
 			return false;
 		}
 		default: {
-                    System.out.println("Ingrese una opcion valida");
+			System.out.println("Ingrese una opcion valida");
 			return true;
 		}
 		}
 	}
 
-	private Pet readPetData()throws Exception {
-                System.out.println("ingrese la cedula del dueño");
-                String document = reader.nextLine();
-                System.out.println("ingrese el nombre de la mascota");
-                String name = reader.nextLine();
-                System.out.println("ingrese la edad de la mascota");
-                String age = reader.nextLine();
-                System.out.println("ingrese el peso");
-                String weigth = reader.nextLine();
-                System.out.println("ingrese la especie");
-                String spices = reader.nextLine();
-                System.out.println("ingrese las caracteristicas");
-                String features = reader.nextLine();
-                System.out.println("ingrese la raza");
-                String breed = reader.nextLine();
-               
+	private ClinicalOrder readOrderData() throws Exception {
+		System.out.println("ingrese la cedula del veterinario que la genera");
+		String veterinarian = reader.nextLine();
+		System.out.println("ingrese el id de la mascota");
+		String id = reader.nextLine();
+		System.out.println("ingrese el nombre de la medicina");
+		String medicine = reader.nextLine();
+		System.out.println("ingrese la dosis");
+		String doce = reader.nextLine();
+		return clinicalOrderBuilder.builder(veterinarian, id, medicine, doce);
+
+	}
+
+	private Pet readPetData() throws Exception {
+		System.out.println("ingrese la cedula del dueño");
+		String document = reader.nextLine();
+		System.out.println("ingrese el nombre de la mascota");
+		String name = reader.nextLine();
+		System.out.println("ingrese la edad de la mascota");
+		String age = reader.nextLine();
+		System.out.println("ingrese el peso");
+		String weigth = reader.nextLine();
+		System.out.println("ingrese la especie");
+		String spices = reader.nextLine();
+		System.out.println("ingrese las caracteristicas");
+		String features = reader.nextLine();
+		System.out.println("ingrese la raza");
+		String breed = reader.nextLine();
+
 		return petBuilder.builder(document, name, age, weigth, spices, features, breed);
 	}
 

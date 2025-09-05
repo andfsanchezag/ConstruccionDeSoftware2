@@ -1,5 +1,8 @@
 package app.domain.services;
 
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.domain.model.ClinicalOrder;
@@ -11,10 +14,13 @@ import app.domain.ports.PetPort;
 import app.domain.ports.UserPort;
 
 
-//@Service
+@Service
 public class CreateClinicalOrder {
+	@Autowired
 	private UserPort userPort;
+	@Autowired
 	private PetPort petPort;
+	@Autowired
 	private ClinicalOrderPort clinicalOrderPort;
 
 	public void create(ClinicalOrder clinicalOrder) throws Exception {
@@ -26,7 +32,7 @@ public class CreateClinicalOrder {
 		if (pet == null) {
 			throw new Exception("las ordenes se deben aplicar a mascotas registradas");
 		}
-		
+		clinicalOrder.setDate(new Date(System.currentTimeMillis()));
 		clinicalOrder.setPet(pet);
 		clinicalOrder.setOwner(pet.getOwner());
 		clinicalOrder.setVeterinarian(veterinarian);

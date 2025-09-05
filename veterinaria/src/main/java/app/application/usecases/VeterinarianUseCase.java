@@ -2,6 +2,9 @@ package app.application.usecases;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import app.domain.model.ClinicalOrder;
 import app.domain.model.ClinicalRecord;
 import app.domain.model.Pet;
@@ -13,10 +16,13 @@ import app.domain.services.CreatePet;
 import app.domain.services.CreateUser;
 import app.domain.services.SearchClinicalOrderByPet;
 
+@Service
 public class VeterinarianUseCase {
-	
+	@Autowired
 	private CreateUser createUser;
+	@Autowired
 	private CreatePet createPet;
+	@Autowired
 	private CreateClinicalOrder createClinicalOrder;
 	private SearchClinicalOrderByPet searchClinicalOrder;
 	private CreateClinicalRecord createClinicalRecord;

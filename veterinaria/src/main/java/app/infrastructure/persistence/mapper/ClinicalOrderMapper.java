@@ -1,8 +1,6 @@
 package app.infrastructure.persistence.mapper;
 
 import app.domain.model.ClinicalOrder;
-import app.domain.model.Pet;
-import app.domain.model.User;
 import app.infrastructure.persistence.entities.ClinicalOrderEntity;
 
 public class ClinicalOrderMapper {

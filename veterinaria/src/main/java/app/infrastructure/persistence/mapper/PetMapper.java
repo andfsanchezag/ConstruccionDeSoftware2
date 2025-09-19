@@ -1,10 +1,8 @@
 package app.infrastructure.persistence.mapper;
 
 import app.domain.model.Pet;
-import app.domain.model.User;
 import app.domain.model.emuns.Spices; // (corrígelo a Species en tu dominio)
 import app.infrastructure.persistence.entities.PetEntity;
-import app.infrastructure.persistence.entities.UserEntity;
 
 public class PetMapper {
 

@@ -25,6 +25,7 @@ public class VeterinarianUseCase {
 	@Autowired
 	private CreateClinicalOrder createClinicalOrder;
 	private SearchClinicalOrderByPet searchClinicalOrder;
+	@Autowired
 	private CreateClinicalRecord createClinicalRecord;
 
 	public void CreateOwner(User user) throws Exception{

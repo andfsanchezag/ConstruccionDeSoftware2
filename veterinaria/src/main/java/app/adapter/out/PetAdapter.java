@@ -4,12 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.domain.model.Pet;
-import app.domain.model.User;
 import app.domain.ports.PetPort;
 import app.infrastructure.persistence.entities.PetEntity;
-import app.infrastructure.persistence.entities.UserEntity;
 import app.infrastructure.persistence.mapper.PetMapper;
-import app.infrastructure.persistence.mapper.UserMapper;
 import app.infrastructure.persistence.repository.PetRepository;
 
 

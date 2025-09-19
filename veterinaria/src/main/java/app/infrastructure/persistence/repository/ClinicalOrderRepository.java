@@ -13,4 +13,5 @@ public interface ClinicalOrderRepository extends JpaRepository<ClinicalOrderEnti
 	public ClinicalOrderEntity findById(long id);
 
 	public List<ClinicalOrderEntity> findByPet(PetEntity entity);
+
 }

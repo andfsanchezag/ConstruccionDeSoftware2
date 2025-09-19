@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import app.adapter.in.builder.ClinicalOrderBuilder;
+import app.adapter.in.builder.ClinicalRecordBuilder;
 import app.adapter.in.builder.PetBuilder;
 import app.adapter.in.builder.UserBuilder;
 import app.application.usecases.VeterinarianUseCase;
 import app.domain.model.ClinicalOrder;
+import app.domain.model.ClinicalRecord;
 import app.domain.model.Pet;
 import app.domain.model.User;
 
@@ -28,6 +30,8 @@ public class VeterinarianClient {
 	private PetBuilder petBuilder;
 	@Autowired
 	private ClinicalOrderBuilder clinicalOrderBuilder;
+	@Autowired
+	private ClinicalRecordBuilder clinicalRecordBuilder;
 	private static Scanner reader = new Scanner(System.in);
 
 	public void session() {
@@ -67,7 +71,8 @@ public class VeterinarianClient {
 			return true;
 		}
 		case "4": {
-
+			ClinicalRecord clinicalRecord = readClinicalRecordData();
+			veterinarianUseCase.createClinicalRecord(clinicalRecord);
 			return true;
 		}
 		case "5": {
@@ -87,6 +92,35 @@ public class VeterinarianClient {
 			return true;
 		}
 		}
+	}
+
+	private ClinicalRecord readClinicalRecordData() throws Exception{
+		System.out.println("ingrese la cedula del veterinario que la genera");
+		String veterinarian = reader.nextLine();
+		System.out.println("ingrese el id de la mascota");
+		String petId = reader.nextLine();
+		System.out.println("ingrese el motivo de la consulta");
+		String motive = reader.nextLine();
+		System.out.println("ingrese el diagnostico");
+		String diagnosis = reader.nextLine();
+		System.out.println("la medicina asignada");
+		String medicine = reader.nextLine();
+		System.out.println("ingrese la dosis del medicamento");
+		String doce = reader.nextLine();
+		System.out.println("ingrese el nombre del procedimiento");
+		String procedureName = reader.nextLine();
+		System.out.println("ingrese la cedula del veterinario que la genera");
+		String procedureDetails = reader.nextLine();
+		System.out.println("ingrese el id de la orden");
+		String orderId = reader.nextLine();
+		System.out.println("ingrese las alergias");
+		String allergies = reader.nextLine();
+		System.out.println("ingrese sintomas");
+		String symptoms = reader.nextLine();
+		System.out.println("ingrese las vacunas");
+		String vaccination = reader.nextLine();
+		
+		return clinicalRecordBuilder.create(veterinarian, petId, orderId);
 	}
 
 	private ClinicalOrder readOrderData() throws Exception {

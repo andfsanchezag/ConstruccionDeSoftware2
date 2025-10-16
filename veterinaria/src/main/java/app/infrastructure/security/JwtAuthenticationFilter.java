@@ -43,9 +43,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authenticationPort.validateToken(token)) {
             String username = authenticationPort.extractUsername(token);
             String role = authenticationPort.extractRole(token);
-            
+
+            if (role == null || role.trim().isEmpty()) {
+                return; // no role -> no authentication
+            }
+
+            String normalized = role.trim();
+            // ensure uppercase and ROLE_ prefix as Spring expects
+            if (!normalized.toUpperCase().startsWith("ROLE_")) {
+                normalized = "ROLE_" + normalized.toUpperCase();
+            } else {
+                normalized = normalized.toUpperCase();
+            }
+
             ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(role));
+            authorities.add(new SimpleGrantedAuthority(normalized));
             
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                 username, 

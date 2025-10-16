@@ -39,7 +39,7 @@ public class AuthenticationService {
     }
 
     private void validatePassword(String inputPassword, String storedPassword) throws Exception {
-        if (!passwordEncoder.matches(inputPassword, storedPassword)) {
+        if (!inputPassword.equals(storedPassword)) {
             throw new BusinessException("Contraseña incorrecta");
         }
     }

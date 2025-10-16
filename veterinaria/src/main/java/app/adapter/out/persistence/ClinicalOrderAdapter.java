@@ -1,4 +1,4 @@
-package app.adapter.out;
+package app.adapter.out.persistence;
 
 import java.util.ArrayList;
 import java.util.List;

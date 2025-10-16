@@ -11,7 +11,7 @@ public class LoginUseCase {
     @Autowired
     private AuthenticationService authenticationService;
 
-    public TokenResponse login(AuthCredentials credentials) {
+    public TokenResponse login(AuthCredentials credentials) throws Exception {
         return authenticationService.authenticate(credentials);
     }
 }

@@ -1,4 +1,4 @@
-package app.adapter.out;
+package app.adapter.out.persistence;
 
 import app.domain.model.User;
 import app.domain.ports.UserPort;

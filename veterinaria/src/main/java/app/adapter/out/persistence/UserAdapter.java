@@ -1,4 +1,4 @@
-package app.adapter.out;
+package app.adapter.out.persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

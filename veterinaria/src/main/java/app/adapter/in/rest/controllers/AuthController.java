@@ -1,14 +1,18 @@
 package app.adapter.in.rest.controllers;
 
-import app.application.exceptions.BusinessException;
-import app.application.exceptions.InputsException;
-import app.domain.model.auth.AuthCredentials;
-import app.domain.model.auth.TokenResponse;
-import app.application.usecases.LoginUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import app.application.exceptions.BusinessException;
+import app.application.exceptions.InputsException;
+import app.application.usecases.LoginUseCase;
+import app.domain.model.auth.AuthCredentials;
+import app.domain.model.auth.TokenResponse;
 
 @RestController
 @RequestMapping("/api/auth")

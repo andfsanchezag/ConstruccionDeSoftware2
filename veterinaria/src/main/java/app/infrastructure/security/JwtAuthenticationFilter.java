@@ -49,7 +49,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
             String normalized = role.trim();
-            // ensure uppercase and ROLE_ prefix as Spring expects
             if (!normalized.toUpperCase().startsWith("ROLE_")) {
                 normalized = "ROLE_" + normalized.toUpperCase();
             } else {

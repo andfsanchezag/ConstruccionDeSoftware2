@@ -2,14 +2,20 @@ package app.domain.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import app.domain.model.ClinicalOrder;
 import app.domain.model.Pet;
 import app.domain.ports.ClinicalOrderPort;
 import app.domain.ports.PetPort;
 
+@Service
 public class SearchClinicalOrderByPet {
 
+	@Autowired
 	private PetPort petPort;
+	@Autowired
 	private ClinicalOrderPort clinicalOrderPort;
 
 	public List<ClinicalOrder> search(Pet pet) throws Exception {

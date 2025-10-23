@@ -1,5 +1,10 @@
 package app.adapter.in.rest.controllers;
 
+import app.adapter.rest.mapper.UserRestMapper;
+import app.adapter.rest.request.CreateUserRequest;
+import app.adapter.rest.response.UserResponse;
+import app.application.usecases.AdminUseCase;
+import app.domain.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,89 +14,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.adapter.in.builder.UserBuilder;
-import app.adapter.in.rest.request.UserRequest;
-import app.application.exceptions.BusinessException;
-import app.application.exceptions.InputsException;
-import app.application.usecases.AdminUseCase;
-import app.domain.model.User;
-import app.domain.model.emuns.Role;
-
 @RestController
 @RequestMapping("/api/admin")
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
-	@Autowired
-	private UserBuilder userBuilder;
-	@Autowired
-	private AdminUseCase adminUseCase;
 
-	@PostMapping("/seller")
-        @PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> createSeller(@RequestBody UserRequest request) {
-	    try {
-	        User user = userBuilder.build(
-	                request.getName(),
-	                request.getDocument(),
-	                request.getAge(),
-	                request.getUserName(),
-	                request.getPassword()
-	        );
+    @Autowired
+    private AdminUseCase adminUseCase;
 
-	        adminUseCase.createSeller(user);
+    @Autowired
+    private UserRestMapper userRestMapper;
 
-	        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    @PostMapping("/users/veterinarian")
+    public ResponseEntity<UserResponse> createVeterinarian(@RequestBody CreateUserRequest request) throws Exception {
+        User user = userRestMapper.toDomain(request);
+        adminUseCase.createVeterinarian(user);
+        return new ResponseEntity<>(userRestMapper.toResponse(user), HttpStatus.CREATED);
+    }
 
-	    } catch (InputsException ie) {
-	        return ResponseEntity
-	                .status(HttpStatus.BAD_REQUEST)
-	                .body(ie.getMessage());
-
-	    } catch (BusinessException be) {
-	        return ResponseEntity
-	                .status(HttpStatus.CONFLICT)
-	                .body(be.getMessage());
-
-	    } catch (Exception e) {
-	        return ResponseEntity
-	                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-	                .body(e.getMessage());
-	    }
-	}
-
-
-	@PostMapping("/veterinarian")
-        @PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> createVeterinarian(@RequestBody UserRequest request) {
-	    try {
-	        User user = userBuilder.build(
-	                request.getName(),
-	                request.getDocument(),
-	                request.getAge(),
-	                request.getUserName(),
-	                request.getPassword()
-	        );
-
-	        adminUseCase.createVeterinarian(user);
-
-	        return ResponseEntity.status(HttpStatus.CREATED).body(user);
-
-	    } catch (InputsException ie) {
-	        return ResponseEntity
-	                .status(HttpStatus.BAD_REQUEST)
-	                .body(ie.getMessage());
-
-	    } catch (BusinessException be) {
-	        return ResponseEntity
-	                .status(HttpStatus.CONFLICT)
-	                .body(be.getMessage());
-
-	    } catch (Exception e) {
-	        return ResponseEntity
-	                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-	                .body(e.getMessage());
-	    }
-	}
-
-
+    @PostMapping("/users/seller")
+    public ResponseEntity<UserResponse> createSeller(@RequestBody CreateUserRequest request) throws Exception {
+        User user = userRestMapper.toDomain(request);
+        adminUseCase.createSeller(user);
+        return new ResponseEntity<>(userRestMapper.toResponse(user), HttpStatus.CREATED);
+    }
 }
+

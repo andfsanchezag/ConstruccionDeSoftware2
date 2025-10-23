@@ -26,7 +26,7 @@ public class PetValidator extends SimpleValidator {
     
     public Spices spicesValidator(String value) throws Exception {
         stringValidator("Nombre de la mascota ", value);
-        return Spices.valueOf(value);
+        return Spices.valueOf(value.toUpperCase());
     }
     
     public String breedValidator(String value) throws Exception {

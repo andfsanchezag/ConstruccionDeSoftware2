@@ -24,6 +24,7 @@ public class VeterinarianUseCase {
 	private CreatePet createPet;
 	@Autowired
 	private CreateClinicalOrder createClinicalOrder;
+	@Autowired
 	private SearchClinicalOrderByPet searchClinicalOrder;
 	@Autowired
 	private CreateClinicalRecord createClinicalRecord;

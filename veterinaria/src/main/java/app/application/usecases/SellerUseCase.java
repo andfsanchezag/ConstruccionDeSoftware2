@@ -15,6 +15,7 @@ import app.domain.services.SearchClinicalOrderByPet;
 public class SellerUseCase {
 	@Autowired
 	private CreateInvoice createInvoice;
+	@Autowired
 	private SearchClinicalOrderByPet searchClinicalOrderByPet;
 
 	public void CreateInvoice(Invoice invoice) throws Exception {

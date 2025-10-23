@@ -4,5 +4,6 @@ public enum Spices {
 	DOG,
 	CAT,
 	BIRD,
-	FISH
+	FISH,
+	RABBIT
 }

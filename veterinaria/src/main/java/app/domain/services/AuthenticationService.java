@@ -19,8 +19,6 @@ public class AuthenticationService {
     @Autowired
     private UserPort userPort;
     
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     public TokenResponse authenticate(AuthCredentials credentials) throws Exception{
         User user = this.getUserByUsername(credentials.getUsername());

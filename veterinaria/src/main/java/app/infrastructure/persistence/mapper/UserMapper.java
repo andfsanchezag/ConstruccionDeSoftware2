@@ -14,7 +14,7 @@ public class UserMapper {
         entity.setName(user.getName());
         entity.setDocument(user.getDocument());
         entity.setAge(user.getAge());
-        entity.setRole(user.getRole().name());
+    entity.setRole(user.getRole() != null ? String.valueOf(user.getRole()) : null);
         entity.setUserName(user.getUserName());
         entity.setPassword(user.getPassword());
         return entity;
@@ -27,9 +27,18 @@ public class UserMapper {
         user.setName(entity.getName());
         user.setDocument(entity.getDocument());
         user.setAge(entity.getAge());
-        user.setRole(Role.valueOf(entity.getRole()));
+        user.setRole(parseRole(entity.getRole()));
         user.setUserName(entity.getUserName());
         user.setPassword(entity.getPassword());
         return user;
+    }
+
+    private static Role parseRole(String role) {
+        if (role == null) return null;
+        try {
+            return Role.valueOf(role.toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            return null;
+        }
     }
 }

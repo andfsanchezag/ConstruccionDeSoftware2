@@ -1,0 +1,58 @@
+services:
+  # Servicio de Base de Datos MySQL
+  mysql-db:
+    image: mysql:8.0
+    container_name: veterinaria-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: veterinaria_root_2024
+      MYSQL_DATABASE: veterinary
+      MYSQL_USER: veterinaria_user
+      MYSQL_PASSWORD: veterinaria_pass_2024
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - veterinaria-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pveterinaria_root_2024"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Servicio de la Aplicación Spring Boot
+  veterinaria-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: veterinaria-app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/veterinary?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: veterinaria_user
+      SPRING_DATASOURCE_PASSWORD: veterinaria_pass_2024
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - veterinaria-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+# Volúmenes persistentes
+volumes:
+  mysql_data:
+    driver: local
+
+# Red personalizada
+networks:
+  veterinaria-network:
+    driver: bridge

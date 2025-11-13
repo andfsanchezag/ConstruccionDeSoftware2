@@ -1,0 +1,28 @@
+# Archivos de compilación
+target/
+!target/*.jar
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Git
+.git/
+.gitignore
+
+# Archivos de documentación
+*.md
+!README.md
+
+# Archivos de prueba
+*.log
+
+# Archivos de Maven locales
+.m2/

@@ -28,6 +28,14 @@ class ClinicalOrderValidatorTest {
         );
         assertTrue(ex.getMessage().contains("medicina de la orden"));
     }
+    
+    @Test
+    void medicineValidator_withEmptyMedicine_shouldThrowInputsException() {
+        InputsException ex = assertThrows(InputsException.class, () -> 
+            validator.medicineValidator("")
+        );
+        assertTrue(ex.getMessage().contains("medicina de la orden"));
+    }
 
     @Test
     void doceValidator_withValidDose_shouldReturnDose() throws Exception {

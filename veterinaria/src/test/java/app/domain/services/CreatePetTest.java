@@ -109,6 +109,7 @@ class CreatePetTest {
         // Assert
         assertSame(foundOwner, testPet.getOwner());
         assertEquals("Full Owner Data", testPet.getOwner().getName());
+        assertEquals(40,testPet.getOwner().getAge());
         verify(petPort).save(testPet);
     }
 }

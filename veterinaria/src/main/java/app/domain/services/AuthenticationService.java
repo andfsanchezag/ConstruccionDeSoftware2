@@ -19,6 +19,8 @@ public class AuthenticationService {
     @Autowired
     private UserPort userPort;
     
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public TokenResponse authenticate(AuthCredentials credentials) throws Exception{
         User user = this.getUserByUsername(credentials.getUsername());
@@ -37,7 +39,7 @@ public class AuthenticationService {
     }
 
     private void validatePassword(String inputPassword, String storedPassword) throws Exception {
-        if (!inputPassword.equals(storedPassword)) {
+        if (!passwordEncoder.matches(inputPassword, storedPassword)) {
             throw new BusinessException("Contraseña incorrecta");
         }
     }
